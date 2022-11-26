@@ -1,0 +1,49 @@
+body{
+    color: #333;
+    font-family:  'Roboto', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.page-header{
+    height: 9em;
+    margin-left: -20px;
+}
+h2{
+    font-size: 1.5em;
+}
+h2{
+    font-size: 1.3em;
+}
+h4, h5, h6{
+    font-size: 1em;
+}
+h1, h2, h3{
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    font-weight: 900;
+}
+
+h1.avatar-top{
+    margin-top: 2em;
+    font-size: 0.8em;
+}
+h1.avatar-top img{
+    width: 32px;
+    margin-right: .2em;
+    clip-path: circle(15px at center);
+    margin-top: -3px;
+}
+.article{
+    margin-button: 3em;
+}
+
+h2.article-title{
+    margin-bottom: 0;
+}
+h2.article-title a{
+    text-decoration: none;
+    color: #333;
+}
+h2.article-title a:hover {
+     color: #555;
+ }

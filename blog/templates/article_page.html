@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Borsin Blog{% endblock %}
+
+{% block content %}
+        <div class="article">
+            <h2 class="article-title">{{article.title}}</h2>
+            <p class="article-text">{{article.full_text}}</p>
+        </div>
+{% endblock %}
