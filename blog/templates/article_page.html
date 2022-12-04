@@ -4,8 +4,14 @@
 {% block title %}Borsin Blog{% endblock %}
 
 {% block content %}
-        <div class="article">
-            <h2 class="article-title">{{article.title}}</h2>
-            <p class="article-text">{{article.full_text}}</p>
+    <div class="row justify-content-center">
+    <div class="col-md-12 col-lg-8">
+        <div class="article-list">
+                <div class="article">
+                <h1 class="article-title">{{article.title}}</h1>
+                <p class="article-text">{{article.full_text | safe }}</p>
+            </div>
         </div>
+    </div>
+    </div>
 {% endblock %}

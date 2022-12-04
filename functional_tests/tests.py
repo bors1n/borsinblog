@@ -6,12 +6,17 @@ from django.test import LiveServerTestCase
 from blog.models import Article
 from datetime import datetime
 import pytz
+import os
 
 
 class BasicInstallTest(LiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Chrome()
+        staging_server = os.environ.get('STAGING_SERVER') #пытаемся загрузить из окружение ссылку в переменной staging_server
+        if staging_server:
+            self.live_server_url = 'http://' + staging_server
+
         Article.objects.create(title='title 1',
                                summary='summary 1',
                                full_text='full_test 1',

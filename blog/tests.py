@@ -5,6 +5,7 @@ from django.http import HttpRequest
 from blog.models import Article
 from datetime import datetime
 import pytz
+from django.urls import reverse
 
 
 class ArticlePageTest(TestCase):
@@ -55,19 +56,12 @@ class HomePageTest(TestCase):
         self.assertIn('summary 2', html)
         self.assertNotIn('full_test 2', html)
 
-    def test_root_url_resolves_to_home_page_view(self):
-        found = resolve('/')
-        self.assertEqual(found.func, home_page)
-
     def test_home_page_returns_correct_html(self):
-        request = HttpRequest()
-        response = home_page(request)
-        html = response.content.decode('utf8')
+        url = reverse('home_page') #преабразует название из файла url в ссылку
+        response = self.client.get(url) #получаем ответ из адреса ссылки
+        self.assertTemplateUsed(response, 'home_page.html') #проверяем что в ответе загружен темлейт home_page
 
-        self.assertTrue(html.startswith('<html>'))
-        self.assertIn('<title>Borsin Blog</title>', html)
-        self.assertIn('<h1>Alexander Borsin</h1>', html)
-        self.assertTrue(html.endswith('</html>'))
+
 
 
 class ArticleModelTest(TestCase):
