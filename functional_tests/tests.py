@@ -47,7 +47,7 @@ class BasicInstallTest(LiveServerTestCase):
         self.browser.set_window_size(1024, 768)
         #проверяем загрузились ли стили
         footer = self.browser.find_element(By.CLASS_NAME, 'footer')
-        self.assertTrue(footer.location['y'] > 600)
+        self.assertTrue(footer.location['y'] > 500)
 
     def test_home_page_blog(self):
         # проверка что под шапкой сайта расположен болк статей.
