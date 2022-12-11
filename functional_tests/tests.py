@@ -45,9 +45,9 @@ class BasicInstallTest(LiveServerTestCase):
         #тест внешнего вида страницы
         self.browser.get(self.live_server_url)
         self.browser.set_window_size(1024, 768)
-        #проверяем горизонтальный отступ заголовка
-        header = self.browser.find_element(By.TAG_NAME, 'h1')
-        self.assertTrue(header.location['x'] > 10)
+        #проверяем загрузились ли стили
+        footer = self.browser.find_element(By.CLASS_NAME, 'footer')
+        self.assertTrue(footer.location['y'] > 600)
 
     def test_home_page_blog(self):
         # проверка что под шапкой сайта расположен болк статей.
