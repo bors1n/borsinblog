@@ -63,7 +63,6 @@ class HomePageTest(TestCase):
 
 
 
-
 class ArticleModelTest(TestCase):
 
     def test_article_model_save_and_retrieve(self):

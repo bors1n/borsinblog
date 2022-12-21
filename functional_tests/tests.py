@@ -110,6 +110,15 @@ class BasicInstallTest(LiveServerTestCase):
 
         self.assertEqual(initial_url, final_url)
 
+    def test_favicon_icon(self):
+        self.browser.get(self.live_server_url)
+        head = self.browser.find_element(By.TAG_NAME, 'head')
+        link = head.find_element(By.TAG_NAME, 'link')
+        favicon = link.get_attribute('rel')
+        self.assertEqual(favicon, 'shortcut icon')
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
