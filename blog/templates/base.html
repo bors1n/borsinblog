@@ -12,10 +12,12 @@
     <div class="container">
         <div class="row page-header">
             <div class="col">
-                <h1 class="avatar-top">
+                <div class="avatar-top">
+                    {% block page_header %}
                     <img src="{% static 'img/cruser.jpeg' %}"/>
                     <span class="author-name">Alexander Borsin</span>
-                </h1>
+                    {% endblock %}
+                </div>
             </div>
         </div>
         {% block content %}

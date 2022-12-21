@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Borsin Blog{% endblock %}
+{% block title %}Borsin blog{% endblock %}
+
+{% block page_header %}
+<a href="{% url 'home_page' %}">
+    <img src="{% static 'img/cruser.jpeg' %}" />
+    <span class="author-name">Alexander Borsin</span>
+</a>
+{% endblock %}
 
 {% block content %}
     <div class="row justify-content-center">

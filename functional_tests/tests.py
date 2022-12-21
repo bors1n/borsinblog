@@ -7,6 +7,7 @@ from blog.models import Article
 from datetime import datetime
 import pytz
 import os
+import time
 
 
 class BasicInstallTest(LiveServerTestCase):
@@ -21,23 +22,36 @@ class BasicInstallTest(LiveServerTestCase):
                                summary='summary 1',
                                full_text='full_test 1',
                                pubdate=datetime.utcnow().replace(tzinfo=pytz.utc),
-                               slug='test_slug'
+                               slug='test_slug-1'
+                               )
+        Article.objects.create(title='title 2',
+                               summary='summary 2',
+                               full_text='full_test 2',
+                               pubdate=datetime.utcnow().replace(tzinfo=pytz.utc),
+                               slug='test_slug-2'
+                               )
+        Article.objects.create(title='title 3',
+                               summary='summary 3',
+                               full_text='full_test 3',
+                               pubdate=datetime.utcnow().replace(tzinfo=pytz.utc),
+                               slug='test_slug-3'
                                )
 #так как LiveServerTestCase для тестов осздает новую базу, в ней нет статей
 #добавили в setUp функционал с болванкой статьи для проведения тестов.
     def tearDown(self):
+        #time.sleep(10)
         self.browser.quit()
 
     def test_home_page_title(self):
         # тест открытия сайта и загаловка сайта
         self.browser.get(self.live_server_url)
-        self.assertIn('Borsin Blog', self.browser.title)
+        self.assertIn('Borsin blog', self.browser.title)
         # self.fail('Finish the test!')
 
     def test_home_page_header(self):
         # тест шапки сайта
         self.browser.get(self.live_server_url)
-        header = self.browser.find_element(By.TAG_NAME, 'h1')
+        header = self.browser.find_element(By.CLASS_NAME, 'avatar-top')
         self.assertIn('Alexander Borsin', header.text)
         # self.fail('Finish the test!')
 
@@ -47,7 +61,7 @@ class BasicInstallTest(LiveServerTestCase):
         self.browser.set_window_size(1024, 768)
         #проверяем загрузились ли стили
         footer = self.browser.find_element(By.CLASS_NAME, 'footer')
-        self.assertTrue(footer.location['y'] > 500)
+        self.assertTrue(footer.location['y'] > 200)
 
     def test_home_page_blog(self):
         # проверка что под шапкой сайта расположен болк статей.
@@ -77,6 +91,24 @@ class BasicInstallTest(LiveServerTestCase):
 
         article_page_title = self.browser.find_element(By.CLASS_NAME, 'article-title')
         self.assertIn(article_title_text, article_page_title.text)
+
+    def test_article_page_header_has_link_that_leads_to_home(self):
+        self.browser.get(self.live_server_url)
+        initial_url = self.browser.current_url
+
+        article = self.browser.find_element(By.CLASS_NAME, 'article')
+        article_title = article.find_element(By.CLASS_NAME, 'article-title')
+        article_link = article_title.find_element(By.TAG_NAME, 'a')
+
+        self.browser.get(article_link.get_attribute('href'))
+
+        page_header = self.browser.find_element(By.CLASS_NAME, 'avatar-top')
+        href_back = page_header.find_element(By.TAG_NAME, 'a').get_attribute('href')
+        self.browser.get(href_back)
+
+        final_url = self.browser.current_url
+
+        self.assertEqual(initial_url, final_url)
 
 
 if __name__ == '__main__':
