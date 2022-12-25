@@ -1,5 +1,4 @@
 import unittest
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from django.test import LiveServerTestCase
@@ -116,6 +115,19 @@ class BasicInstallTest(LiveServerTestCase):
         link = head.find_element(By.TAG_NAME, 'link')
         favicon = link.get_attribute('rel')
         self.assertEqual(favicon, 'shortcut icon')
+
+    def test_about_page_has_link_that_leads_to_aboutpage(self):
+        # посетитель зашел на сайт и уидиел надпись "обо мне"
+        self.browser.get(self.live_server_url)
+        about_page = self.browser.find_element(By.CLASS_NAME, 'about_page')
+        #посетитель кликнул на надпись "обо мне"
+        about_page_text = about_page.text
+        about_page_link = about_page.find_element(By.TAG_NAME, 'a')
+        #посетитель перешел по ссылке
+        self.browser.get(about_page_link.get_attribute('href'))
+        #посетитель видет заголовок страницы "Обо мне".
+        about_page_title = self.browser.find_element(By.TAG_NAME, 'h1')
+        self.assertIn(about_page_text, about_page_title.text)
 
 
 

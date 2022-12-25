@@ -1,6 +1,6 @@
 from django.urls import resolve
 from django.test import TestCase
-from blog.views import home_page, article_page
+from blog.views import home_page, article_page, about_page
 from django.http import HttpRequest
 from blog.models import Article
 from datetime import datetime
@@ -61,6 +61,13 @@ class HomePageTest(TestCase):
         response = self.client.get(url) #получаем ответ из адреса ссылки
         self.assertTemplateUsed(response, 'home_page.html') #проверяем что в ответе загружен темлейт home_page
 
+
+class AboutPageTest(TestCase):
+
+    def test_about_page_returns_correct_html(self):
+        url = reverse('about_page')
+        response = self.client.get(url)
+        self.assertTemplateUsed(response, 'about_page.html')
 
 
 class ArticleModelTest(TestCase):

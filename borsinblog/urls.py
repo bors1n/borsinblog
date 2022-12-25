@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from blog.views import home_page, article_page
+from blog.views import home_page, article_page, about_page
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_page, name='home_page'),
     path('blog/<slug:slug>', article_page, name='article_page'),
+    path('about', about_page, name='about_page'),
 ]
 
 if settings.DEBUG:

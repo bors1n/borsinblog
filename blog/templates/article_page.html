@@ -3,22 +3,17 @@
 
 {% block title %}Borsin blog{% endblock %}
 
-{% block page_header %}
-<a href="{% url 'home_page' %}">
-    <img src="{% static 'img/cruser.jpeg' %}" />
-    <span class="author-name">Alexander Borsin</span>
-</a>
-{% endblock %}
-
 {% block content %}
-    <div class="row justify-content-center">
-    <div class="col-md-12 col-lg-8">
-        <div class="article-list">
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-8">
+            <div class="article-list">
                 <div class="article">
                 <h1 class="article-title">{{article.title}}</h1>
                 <p class="article-text">{{article.full_text | safe }}</p>
+                </div>
             </div>
         </div>
     </div>
-    </div>
+</div>
 {% endblock %}
