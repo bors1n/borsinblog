@@ -117,3 +117,7 @@ header.masthead {
 .about_image{
     float: right;
 }
+
+.article-image {
+  width: 100%;
+}
