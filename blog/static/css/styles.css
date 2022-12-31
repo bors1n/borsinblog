@@ -121,3 +121,7 @@ header.masthead {
 .article-image {
   width: 100%;
 }
+.vertical-space {
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+}
