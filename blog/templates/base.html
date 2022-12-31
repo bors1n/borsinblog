@@ -18,10 +18,11 @@
             <img src="{% static 'img/avatar-3.jpg' %}"/>
             <a href="{% url 'home_page' %}">Alexander Borsin</a>
             </div>
+            <div class="about_page">
                 <ul class="navbar-nav ms-auto py-4 py-lg-0">
-                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'home_page' %}">Blog</a></li>
-                    <li class="nav-item active"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'about_page' %}">About</a></li>
+                    <li class="nav-item active"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{% url 'about_page' %}">About me</a></li>
                 </ul>
+            </div>
         </div>
     </nav>
         {% block content %}
