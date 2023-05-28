@@ -12,7 +12,7 @@ import time
 class BasicInstallTest(LiveServerTestCase):
 
     def setUp(self):
-        self.browser = webdriver.Chrome()
+        self.browser = webdriver.Chrome('/Users/bors1n/Downloads/chromedriver_mac_arm64/chromedriver')
         staging_server = os.environ.get('STAGING_SERVER') #пытаемся загрузить из окружение ссылку в переменной staging_server
         if staging_server:
             self.live_server_url = 'http://' + staging_server
