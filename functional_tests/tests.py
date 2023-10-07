@@ -8,6 +8,8 @@ import pytz
 import os
 import time
 
+import undetected_chromedriver as uc
+driver = uc.Chrome(version_main=117)
 
 class BasicInstallTest(LiveServerTestCase):
 

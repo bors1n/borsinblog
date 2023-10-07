@@ -142,3 +142,6 @@ dmypy.json
 #deply
 deploy_tools/
 
+.idea/
+
+
