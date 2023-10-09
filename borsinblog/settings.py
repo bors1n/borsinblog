@@ -29,6 +29,10 @@ else:
     DEBUG = True
     ALLOWED_HOSTS = []
 
+if DEBUG:
+    CSRF_TRUSTED_ORIGINS = ['http://*', 'https://*']
+if not DEBUG:
+    CSRF_TRUSTED_ORIGINS = ['http://*.borsinblog.com', 'https://*.borsinblog.com']
 # Application definition
 
 INSTALLED_APPS = [
